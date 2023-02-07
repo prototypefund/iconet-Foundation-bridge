@@ -4,15 +4,13 @@
 - git
 - PHP > 8.0
 - composer
-- npm
 - mysql-server
-- Optional: phpstorm IDE
 
 > Note: For more details read the [Laravel Getting Startet Guide](http://laravel.com/docs)
 
 On Ubuntu 22.04: `sudo apt install git php composer npm mysql-server`
 
-1. Clone the repository from https://codeberg.org/iconet-Foundation/prototype-ExampleNetB
+1. Clone the repository from https://codeberg.org/iconet-Foundation/bridge
 
 2. Install dependencies with `composer install`. Don't run `composer update`.
 
@@ -20,17 +18,17 @@ On Ubuntu 22.04: `sudo apt install git php composer npm mysql-server`
    On Ubuntu use `sudo apt install ...`
    On Windows find your `php.ini` by running `php -ini`. In that file find the section about dynamic extensions and uncomment the needed ones.
 
-4. Create a new Database `netB` and a user with access.
+4. Create a new Database `bridge` and a user with access.
 
 5. Copy `.env.example` to `.env`
    Enter the details for your MYSQL connection.
 
 6. `php artisan key:generate`
 
-7. `php artisan migrate --seed` to initialize the DB schema and create some dummy accounts. You can login with `t@t.tt` and password `ttttt`. More accounts are automatically created in `database/seeders/DatabaseSeeder.php`.
+7. `php artisan migrate --seed` to initialize the DB schema.
 
-8. `npm ci` installs node packages.
-9. Start the server with `php artisan serve` and the development server with `npm run dev` (wich enables hot-swapping and auto-refreshing the page). To build the assets only once use `npm run build`
+8. Start the server with `php artisan serve` the default URL is `http://localhost:8000`
+9. If you need a https connection, you will need something like mkcert or loophole.
 
 ## Problem solving
 1. Clear caches:
