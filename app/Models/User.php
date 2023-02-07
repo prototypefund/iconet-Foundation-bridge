@@ -12,15 +12,21 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'handle';
+    protected $keyType = 'string';
+    public $incrementing = false;
+
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'handle',
+        'privatekey',
+        'publickey'
     ];
 
     /**
@@ -29,8 +35,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'privatekey',
     ];
 
     /**
@@ -39,6 +44,20 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
+
+    public function uri()
+    {
+        return route('profile', $this->handle);
+    }
+
+    public function inbox()
+    {
+        return route('inbox', $this->handle);
+    }
+
+    public function keyId()
+    {
+        return $this->uri() . '#main-key';
+    }
 }

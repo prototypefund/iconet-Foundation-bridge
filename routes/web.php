@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ActivityPubInbox;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Webfinger;
+use App\Http\Middleware\ActivityContentType;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware([ActivityContentType::class])->group(function () {
+    Route::prefix('.well-known/webfinger')->group(function () {
+        Route::controller(Webfinger::class)->group(function () {
+            Route::get('/', 'query');
+        });
+    });
+
+    Route::get('user/{user}', [UserController::class, 'show'])->name('profile');
 });
+
+Route::post('inbox/{user?}', [ActivityPubInbox::class, 'postActivity'])->name('inbox');
