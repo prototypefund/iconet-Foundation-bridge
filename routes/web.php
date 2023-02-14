@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivityPubInbox;
+use App\Http\Controllers\IconetInbox;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Webfinger;
 use App\Http\Middleware\ActivityContentType;
@@ -31,3 +32,5 @@ Route::middleware([ActivityContentType::class])->group(function () {
 Route::post('inbox/{user?}', [ActivityPubInbox::class, 'postActivity'])
     ->name('inbox')
     ->middleware(VerifyHttpSignature::class);
+
+Route::post('/iconet', [IconetInbox::class, 'post']);

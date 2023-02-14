@@ -41,6 +41,17 @@ class IconetAddress implements \JsonSerializable
     }
 
     /**
+     * alice__example.net@bridge.org => alice@example.net
+     */
+    public function unbridged()
+    {
+        if ($this->domain !== env('APP_URL')) return null;
+        $address = Str::replace('__', '@', $this->local);
+        if ($this->local == $address) return null;
+        return new IconetAddress($address);
+    }
+
+    /**
      * https://example.net/users/alice => alice@example.net
      * @param string $uri URI of an ActivityPub actor. Its server instance must support webfinger resource queries.
      * @return IconetAddress|null
