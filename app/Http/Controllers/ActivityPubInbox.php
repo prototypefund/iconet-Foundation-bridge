@@ -24,7 +24,7 @@ class ActivityPubInbox extends Controller
         $actor = $activity['actor'];
 
 
-        $iconet = $object['https://iconet-foundation.org/ns#iconet'] ?? $object['iconet'] ?? null;
+        $iconet = $object['https://ns.iconet-foundation.org#iconet'] ?? $object['iconet'] ?? null;
         if (!is_array($iconet)) {
             Log::alert('WRONG ICONET format');
             $iconet = json_decode($iconet, JSON_OBJECT_AS_ARRAY);

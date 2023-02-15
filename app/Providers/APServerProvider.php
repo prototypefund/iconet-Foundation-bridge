@@ -20,7 +20,7 @@ class APServerProvider extends ServiceProvider
         $mastodon = [
             'Person|Group' => ['uuid', 'publicKey', 'featured', 'featuredTags',
                 'manuallyApprovesFollowers', 'discoverable', 'devices', ],
-            'Note'  => ['https://iconet-foundation.org/ns#iconet',]
+            'Note'  => ['https://ns.iconet-foundation.org#iconet',]
         ];
         Server::server([
             'instance' => ['debug' => env('DEBUG_DISABLE_HTTPS', false)],

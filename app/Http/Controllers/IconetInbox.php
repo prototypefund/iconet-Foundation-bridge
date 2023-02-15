@@ -73,7 +73,7 @@ class IconetInbox extends Controller
                 "content" => "This status contains iconet data.",
                 "to" => [$to,
                     "https://www.w3.org/ns/activitystreams#Public"], // Only public toots show up in the feed
-                "https://iconet-foundation.org/ns#iconet" => $iconetPacket,
+                "https://ns.iconet-foundation.org#iconet" => $iconetPacket,
             ]
         ]);
     }
