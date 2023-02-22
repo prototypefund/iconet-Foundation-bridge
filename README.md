@@ -44,11 +44,22 @@ On Ubuntu 22.04: `sudo apt install git php composer npm mysql-server`
 
 
 
-### Running PhpUnit Tests
-In phpstorm select the `All Tests` run configuration and run it. Or on console
 
-    php vendor/bin/phpunit
+## Using Docker
 
+Alternatively, you can create a docker instance which will host a mysql and apache server.
+The docker container will serve the local development directory, so external changes are immediately made available. (This also means the container can rewrite local files. So take care to avoid data loss, when switching between the two
+setups.)
+
+```bash
+docker-compose up
+```
+
+There is no single docker-compose file, that orchestrates the bridge together with the other two projects, so the manual setup is recommended, if you want to test the full integration.
+The traefik reverse proxy from the example-netA repository's docker-compose.yml redirects https://bridge.localhost to this container. Follow the setup instructions from there.
+
+You can attach to it with `docker attach bridge` (`Ctrl+P` `Ctlr+Q` to detach). Apache logs are located
+at `/var/log/apache2/`.
 
 
 ## Optional

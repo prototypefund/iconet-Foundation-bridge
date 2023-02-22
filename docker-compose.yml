@@ -1,0 +1,18 @@
+services:
+  bridge:
+    build: .
+    container_name: bridge
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/var/www/bridge
+# Uncomment when not using traefik
+#    ports:
+#        - "8081:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bridge.tls=true"
+      - "traefik.http.routers.bridge.rule=Host(`bridge.localhost`)"
+      - "traefik.http.routers.bridge.entrypoints=websecure"
+      - "traefik.docker.network=traefik-proxy"
+
