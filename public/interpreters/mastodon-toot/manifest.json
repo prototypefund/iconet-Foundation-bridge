@@ -1,0 +1,22 @@
+{
+  "@context": "https://ns.iconet-foundation.org#",
+  "@type": "InterpreterManifest",
+  "@id": "/interpreters/mastodon-toot/manifest.json",
+  "interpreters": [
+    {
+      "@id": "/interpreters/mastodon-toot/template.html",
+      "sourceType": "application/mastodontoot",
+      "targetType": "application/iconet+html",
+      "sha-512": "<sha-512 hash>",
+      "scripts": [
+          "/interpreters/tunnel.js"
+      ],
+      "permissions": {
+        "content": true,
+          "allowedSources": [
+              "http://localhost:3000/api/"
+          ]
+      }
+    }
+  ]
+}
