@@ -1,0 +1,37 @@
+{
+  "@context": "https://ns.iconet-foundation.org#",
+  "@type": "InterpreterManifest",
+  "@id": "/iconet/formats/markdown/manifest.json",
+  "interpreters": [
+    {
+      "@id": "/interpreters/markdown/template.html",
+      "sourceType": "application/neta+json",
+      "targetType": "application/iconet+html",
+      "sha-512": "<sha-512 hash>",
+      "scripts": [
+        "/interpreters/marked.min.js",
+        "/interpreters/purify.min.js",
+        "/interpreters/highlight.min.js",
+        "/interpreters/tunnel.js"
+      ],
+      "permissions": {
+        "content": true
+      }
+    },
+    {
+      "@id": "/interpreters/markdown/template.html",
+      "sourceType": "text/markdown",
+      "targetType": "application/iconet+html",
+      "sha-512": "<sha-512 hash>",
+      "scripts": [
+        "/interpreters/marked.min.js",
+        "/interpreters/purify.min.js",
+        "/interpreters/highlight.min.js",
+        "/interpreters/tunnel.js"
+      ],
+      "permissions": {
+        "content": true
+      }
+    }
+  ]
+}
